@@ -11,7 +11,7 @@ const upload = multer() // for parsing multipart/form-data
 var low = require('lowdb')
 var FileSync = require('lowdb/adapters/FileSync')
 var shortid = require('shortid');
-
+const port = 3000;
 var adapter = new FileSync('db.json')
 var db = low(adapter)
 db.defaults({ todos:[]}).write()
@@ -70,6 +70,6 @@ app.post('/todos/create', function(request, response){
 
 
 // listen for requests :)
-app.listen(process.env.PORT, () => {
-  console.log("Server listening on port " + process.env.PORT);
+app.listen(port, function(){
+  console.log('Server listen on port' + port);
 });
