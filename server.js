@@ -50,13 +50,20 @@ app.get('/todos/create', function(request, response){
   response.render('create/index')
 });
 
-app.get('/todos/:todoid', function (request, response) {
+app.get('/todos/:id', function (request, response) {
   
-  var id = parseInt(request.params.todoid);
+  var id = request.params.id;
   var todo = db.get("todos").find({id: id}).value()
   response.render("todos/viewid", {
     todo: todo
   })
+  
+});
+
+app.get('/todos/:id/delete', function (request, response) {
+  var id = request.params.id;
+  db.get("todos").remove({id: id}).write();
+  response.redirect('/todos');
   
 });
 
@@ -73,3 +80,4 @@ app.post('/todos/create', function(request, response){
 app.listen(port, function(){
   console.log('Server listen on port' + port);
 });
+

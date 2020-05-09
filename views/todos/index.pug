@@ -5,10 +5,13 @@ a(href='/todos/create') New To Do
 ul
   each todo in todos
     li 
+       a(href="/todos/"+todo.id+"/delete ") Xóa
+       span &nbsp
+       span &nbsp
        span=todo.text
+       span &nbsp
+       span &nbsp
        a(href="/todos/" +todo.id) view
-    
-
 
 script.
   var input = document.getElementById("input");
