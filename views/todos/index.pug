@@ -1,0 +1,20 @@
+form(action='/todos/search', method='GET')
+  input#input(type='text', name='q')
+  button#bts Search
+a(href='/todos/create') New To Do
+ul
+  each todo in todos
+    li 
+       span=todo.text
+       a(href="/todos/" +todo.id) view
+    
+
+
+script.
+  var input = document.getElementById("input");
+  var button = document.getElementById("bts");
+  button.addEventListener("click", function(){
+  sessionStorage.setItem("d1", input.value)
+  });
+  input.value=sessionStorage.getItem("d1");
+    
